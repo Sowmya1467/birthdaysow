@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Jeeva 💕</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&family=Playfair+Display:wght@400;600&family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(#FFF5F7,#FFE4E6);
+  overflow:hidden;
+  text-align:center;
+  position:relative;
+}
+
+/* ================= PAGE SYSTEM ================= */
+
+.page{
+  min-height:100vh;
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  transition:0.6s ease;
+}
+
+.hidden{
+  opacity:0;
+  transform:scale(0.9);
+  pointer-events:none;
+}
+
+/* ================= MEMORY PAGE ================= */
+
+.memory-page{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  min-height:100vh;
+  background:linear-gradient(#FFF5F7,#FFE4E6);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  opacity:0;
+  pointer-events:none;
+  transition:0.8s ease;
+}
+
+.memory-page.active{
+  opacity:1;
+  pointer-events:auto;
+}
+
+/* ================= MEMORY CARD ================= */
+
+.memory-card{
+  background:#fff;
+  width:750px;
+  border-radius:25px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.08);
+  display:flex;
+  align-items:center;
+  padding:30px;
+  gap:30px;
+  margin-top:30px;
+  transition:0.5s ease;
+}
+
+.memory-card img{
+  width:250px;
+  height:250px;
+  object-fit:cover;
+  border-radius:20px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.1);
+  transition:0.4s;
+}
+
+.memory-card img:hover{
+  transform:scale(1.05);
+}
+
+.memory-text{
+  text-align:left;
+  font-size:15px;
+  line-height:1.6;
+  color:#555;
+  max-width:300px;
+  transition:0.4s;
+}
+
+/* ================= DOUBLE BUNTING ================= */
+
+.bunting{
+  position:absolute;
+  display:flex;
+  gap:10px;
+  z-index:2;
+}
+
+.left-bunting{
+  top:40px;
+  left:-20px;
+  transform:rotate(-12deg);
+}
+
+.right-bunting{
+  top:40px;
+  right:-20px;
+  transform:rotate(12deg);
+}
+
+.bunting::before{
+  content:"";
+  position:absolute;
+  top:-8px;
+  left:-20px;
+  right:-20px;
+  height:3px;
+  background:#e59ab0;
+}
+
+.flag{
+  width:0;
+  height:0;
+  border-left:20px solid transparent;
+  border-right:20px solid transparent;
+  border-top:32px solid #FB7185;
+  position:relative;
+  top:10px;
+  animation:swing 3s ease-in-out infinite;
+}
+
+.flag:nth-child(even){ border-top-color:#F9A8D4; }
+.flag:nth-child(3n){ border-top-color:#FBCFE8; }
+.flag:nth-child(2){ top:20px; }
+.flag:nth-child(3){ top:30px; }
+.flag:nth-child(4){ top:20px; }
+
+@keyframes swing{
+  0%{ transform:rotate(0deg); }
+  50%{ transform:rotate(4deg); }
+  100%{ transform:rotate(-4deg); }
+}
+
+/* ================= TITLE DROP ================= */
+
+.title span{
+  font-size:50px;
+  font-family:'Playfair Display';
+  color:#FB7185;
+  display:inline-block;
+  opacity:0;
+  transform:translateY(-40px);
+  animation:drop 0.5s forwards;
+}
+
+@keyframes drop{
+  to{ opacity:1; transform:translateY(0); }
+}
+
+/* ================= TYPEWRITER ================= */
+
+.typewriter{
+  margin-top:30px;
+  font-size:26px;
+  font-family:'Dancing Script';
+  color:#F43F5E;
+  white-space:nowrap;
+  overflow:hidden;
+  width:0;
+  animation:typing 3s steps(30) forwards;
+}
+
+@keyframes typing{
+  to{width:320px;}
+}
+
+/* ================= CAKE ================= */
+
+.cake{
+  position:relative;
+  width:300px;
+  height:300px;
+  margin-top:40px;
+}
+
+.plate{
+  position:absolute;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:260px;
+  height:20px;
+  background:#f3f3f3;
+  border-radius:50%;
+}
+
+.layer{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  border-radius:20px;
+  opacity:0;
+  transition:1s ease;
+}
+
+.layer-bottom{ width:240px; height:60px; background:#FBCFE8; bottom:20px; }
+.layer-middle{ width:200px; height:55px; background:#F9A8D4; bottom:80px; }
+.layer-top{ width:160px; height:50px; background:#FB7185; bottom:135px; }
+
+.candle{
+  position:absolute;
+  width:9px;
+  height:45px;
+  background:white;
+  border-radius:6px;
+  cursor:pointer;
+  opacity:0;
+  bottom:185px;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+.flame{
+  position:absolute;
+  width:16px;
+  height:16px;
+  background:radial-gradient(circle, #FFD700 0%, orange 60%);
+  border-radius:50%;
+  top:-18px;
+  left:-3px;
+  display:none;
+}
+
+/* ================= BUTTON ================= */
+
+button{
+  margin-top:30px;
+  padding:10px 25px;
+  border:none;
+  border-radius:30px;
+  background:#FB7185;
+  color:white;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+button:hover{
+  background:#F43F5E;
+  transform:scale(1.05);
+}
+
+/* ================= BALLOONS ================= */
+
+.emoji-balloon{
+  position:absolute;
+  font-size:40px;
+  bottom:-100px;
+  animation:floatEmoji linear forwards;
+}
+
+@keyframes floatEmoji{
+  to{ transform:translateY(-120vh); }
+}
+
+/* ================= CONFETTI ================= */
+
+.confetti{
+  position:absolute;
+  width:8px;
+  height:8px;
+  top:50%;
+  left:50%;
+  animation:blast 1.5s ease-out forwards;
+}
+
+@keyframes blast{
+  to{
+    transform:translate(var(--x), var(--y)) rotate(720deg);
+    opacity:0;
+  }
+}
+.second-image , .third_image ,.last_image{
+  width:300px;
+  height :150px;
+}
+.fourth_image{
+  height :60px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ================= FIRST PAGE ================= -->
+
+<div class="page" id="page1">
+
+<div class="bunting left-bunting">
+  <div class="flag"></div><div class="flag"></div><div class="flag"></div><div class="flag"></div><div class="flag"></div>
+</div>
+
+<div class="bunting right-bunting">
+  <div class="flag"></div><div class="flag"></div><div class="flag"></div><div class="flag"></div><div class="flag"></div>
+</div>
+
+<h1 class="title" id="title"></h1>
+
+<div id="nameSection" style="display:none;">
+  <div class="typewriter">Jeeva (Jeethalilu) 💕</div>
+  <div style="font-size:14px;margin-top:10px;color:#777;">04 - 03 - 2000</div>
+</div>
+
+<div class="cake">
+  <div class="plate"></div>
+  <div class="layer layer-bottom"></div>
+  <div class="layer layer-middle"></div>
+  <div class="layer layer-top"></div>
+  <div class="candle" id="candle">
+      <div class="flame" id="flame"></div>
+  </div>
+</div>
+
+<button id="nextBtn" style="display:none;">See Memories 💖</button>
+
+</div>
+
+<!-- ================= MEMORY PAGE ================= -->
+
+<div class="memory-page" id="memoryPage">
+
+<h2 style="font-family:'Playfair Display'; font-size:32px;">
+Memories 💕
+</h2>
+
+<div class="memory-card">
+  <img id="memoryImage" src="./photos/first_img.jpeg" height="300px" width="150px">
+  <div class="memory-text" id="memoryText">
+  From the moment you were born, you were meant to be loved endlessly.
+This is our chota Jeev — so tiny, so cute, already full of mischief.
+Even then, you were your mom and dad’s precious little prince,
+spreading smiles without even knowing it.
+  </div>
+</div>
+
+<button onclick="nextMemory()">Next Memory 💖</button>
+
+</div>
+
+<script>
+
+/* TITLE DROP */
+const text="HAPPY BIRTHDAY";
+const title=document.getElementById("title");
+
+[...text].forEach((letter,i)=>{
+  const span=document.createElement("span");
+  span.innerHTML=(letter===" ")?"&nbsp;":letter;
+  span.style.animationDelay=i*0.2+"s";
+  title.appendChild(span);
+});
+
+setTimeout(()=>{ document.getElementById("nameSection").style.display="block"; },3500);
+setTimeout(()=>{ document.querySelector(".layer-bottom").style.opacity=1; },5000);
+setTimeout(()=>{ document.querySelector(".layer-middle").style.opacity=1; },5700);
+setTimeout(()=>{ document.querySelector(".layer-top").style.opacity=1; },6400);
+setTimeout(()=>{ document.getElementById("candle").style.opacity=1; },7200);
+
+document.getElementById("candle").addEventListener("click",()=>{
+  document.getElementById("flame").style.display="block";
+  launchBalloons();
+  launchConfetti();
+  document.getElementById("nextBtn").style.display="inline-block";
+});
+
+document.getElementById("nextBtn").addEventListener("click",()=>{
+  document.getElementById("page1").classList.add("hidden");
+  document.getElementById("memoryPage").classList.add("active");
+  document.body.style.overflow="auto";
+});
+
+/* MEMORY SWITCH */
+const images=["photos/first_img.jpeg",
+"photos/second-image.jpeg",
+"photos/third_image.jpeg",
+"photos/fourth_image.jpeg",
+"photos/fifth_image.jpeg",
+"photos/last_image.jpeg"];
+const texts=[
+"  From the moment you were born, you were meant to be loved endlessly.This is our chota Jeev — so tiny, so cute, already full of mischief.Even then, you were your mom and dad’s precious little prince,spreading smiles without even knowing it.",
+"On your birthday, your dad didn’t just celebrate at home —he announced to the world that his prince was born.He proudly placed your name in the newspaper,not to show off,but because his heart was overflowing with pride.You have always been someone worth celebrating.",
+"The day you were born, her world opened up again with so much hope.You were not just her son — you were her first love, her strength, her entire universe.In your tiny hands, she found her biggest happiness.You became the reason her world felt complete.",
+"You’re too innocent here… but I know you weren’t always that innocent 😌Scaring everyone with your red mouth and running out in your bunny pyjama — you’ve always been the cutest little chaos..",
+" You are such a wonderful human being.The way you care for your loved ones has always made me so happy. You’re the best brother anyone could ask for,and I truly admire the beautiful bond you share with your sister and brother.It says so much about the kind of person you are❤️.",
+"From two innocent childhood souls to two people growing through life together…..six years of learning, fighting, healing, and growing — side by side. Not perfect, but real. Not easy, but worth it. I’m so lucky to have you in my life. But more than luck, it’s love — love we choose every day, love that helps us grow, love that makes us better. On your birthday, I just want you to know: I’m proud of you. I believe in you. And I choose you — again and again.Let’s build this life with patience and endless love."
+];
+
+
+let index=0;
+
+function nextMemory(){
+  index=(index+1)%images.length;
+  const img=document.getElementById("memoryImage");
+  const txt=document.getElementById("memoryText");
+  img.style.opacity=0;
+  txt.style.opacity=0;
+  setTimeout(()=>{
+    img.src=images[index];
+    txt.innerText=texts[index];
+    img.style.opacity=1;
+    txt.style.opacity=1;
+  },300);
+}
+
+/* BALLOONS */
+function launchBalloons(){
+  const emojis=["🎈","🎉","🎊","✨","💖"];
+  for(let i=0;i<35;i++){
+    let balloon=document.createElement("div");
+    balloon.classList.add("emoji-balloon");
+    balloon.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
+    balloon.style.left=Math.random()*100+"vw";
+    balloon.style.animationDuration=(2+Math.random()*2)+"s";
+    document.body.appendChild(balloon);
+    setTimeout(()=>balloon.remove(),7000);
+  }
+}
+
+/* CONFETTI */
+function launchConfetti(){
+  for(let i=0;i<60;i++){
+    const conf=document.createElement("div");
+    conf.classList.add("confetti");
+    const angle=Math.random()*2*Math.PI;
+    const radius=200+Math.random()*150;
+    conf.style.setProperty("--x",Math.cos(angle)*radius+"px");
+    conf.style.setProperty("--y",Math.sin(angle)*radius+"px");
+    conf.style.backgroundColor=`hsl(${Math.random()*360},80%,60%)`;
+    document.body.appendChild(conf);
+    setTimeout(()=>conf.remove(),1500);
+  }
+}
+
+</script>
+
+</body>
+</html>
