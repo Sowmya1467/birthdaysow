@@ -8,7 +8,77 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&family=Playfair+Display:wght@400;600&family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
 
 <style>
+  /* ========================= */
+/* 📱 MOBILE RESPONSIVE FIX */
+/* ========================= */
+
+@media (max-width: 768px){
+
+  body{
+    overflow-x:hidden;
+  }
+
+  .page{
+    padding-top:80px;
+  }
+
+  .title span{
+    font-size:28px;
+  }
+
+  .typewriter{
+    font-size:20px;
+    width:220px;
+  }
+
+  /* Cake smaller */
+  .cake{
+    width:220px;
+    height:240px;
+  }
+
+  .layer-bottom{ width:200px; height:50px; }
+  .layer-middle{ width:160px; height:45px; }
+  .layer-top{ width:120px; height:40px; }
+
+  .candle{
+    bottom:155px;
+  }
+
+  /* Memory card stack */
+  .memory-card{
+    width:90%;
+    flex-direction:column;
+    text-align:center;
+    padding:20px;
+  }
+
+  .memory-card img{
+    width:180px;
+    height:180px;
+  }
+
+  .memory-text{
+    max-width:100%;
+    text-align:center;
+    font-size:14px;
+  }
+
+  button{
+    font-size:13px;
+    padding:8px 20px;
+  }
+
+  /* Bunting smaller */
+  .flag{
+    border-left:15px solid transparent;
+    border-right:15px solid transparent;
+    border-top:24px solid #FB7185;
+  }
+
+}
 *{
+
   margin:0;
   padding:0;
   box-sizing:border-box;
