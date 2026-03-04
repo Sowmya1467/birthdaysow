@@ -18,6 +18,17 @@ margin:0;
 padding:0;
 box-sizing:border-box;
 }
+@media (max-width:480px){
+
+  .title{
+    padding:0 10px;
+  }
+
+  .title span{
+    font-size:24px;
+  }
+
+}
 
 body{
 font-family:'Poppins',sans-serif;
@@ -49,12 +60,15 @@ pointer-events:none;
 /* ================= TITLE ================= */
 
 .title{
-display:block;
-text-align:center;
+  position:relative;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  text-align:center;
 }
 
 .title span{
-font-size:clamp(28px,6vw,50px);
+font-size:clamp(24px,7vw,50px);
 font-family:'Playfair Display';
 color:#FB7185;
 display:inline-block;
